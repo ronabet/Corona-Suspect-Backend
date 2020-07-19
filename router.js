@@ -1,4 +1,5 @@
 var declarationController = require("./controllers/declarationController");
+const { body } = require('express-validator');
 
 module.exports = function(app) {
   app.get("/api/declarations", (req, res) => {
@@ -9,7 +10,10 @@ module.exports = function(app) {
     declarationController.GetDeclarationById(req, res);
   });
   
-  app.post("/api/declarations/create", (req, res) => {
+  app.post("/api/declarations/create",[ 
+    body('reporterMail').isEmail(),
+    body('wasExported').not().isEmpty().isBoolean()
+  ], (req, res) => {
     declarationController.CreateDeclaration(req, res);
   });
 

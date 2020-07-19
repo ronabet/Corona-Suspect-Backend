@@ -1,7 +1,7 @@
 # Corona-Suspect-Backend
 ### Alpha-Team
 
-[![](https://images-platform.99static.com//GstueAZSlmcQiCjUOA94tXEw2io=/245x243:1254x1252/fit-in/500x500/99designs-contests-attachments/95/95760/attachment_95760099)
+![](https://images-platform.99static.com//GstueAZSlmcQiCjUOA94tXEw2io=/245x243:1254x1252/fit-in/500x500/99designs-contests-attachments/95/95760/attachment_95760099)
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)

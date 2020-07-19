@@ -11,12 +11,21 @@ var port = process.env.PORT || 3000;
 class Server {
   constructor() {
     this.app = express();
+    this.app.use(cors());
     this.app.listen(port, function() {
       console.log("Server listening on port: " + port);
     });
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
-    app.use(cors());
+    this.app.use(function(req, res, next) {
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      );
+      res.header("access-Control-Allow-Origin", "*");
+      next();
+    });
     router(this.app);
     mongoose.connect(config.getDbConnectionString(), { useNewUrlParser: true });
   }

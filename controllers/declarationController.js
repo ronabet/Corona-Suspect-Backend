@@ -1,7 +1,12 @@
 var Declarations = require("../models/DeclarationModel");
+const { body, validationResult } = require('express-validator');
 var exports = module.exports;
 
 exports.CreateDeclaration = function(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
   var Declaration = new Declarations(req.body);
   Declaration.save(err => {
     if (err) throw err;
