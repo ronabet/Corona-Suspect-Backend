@@ -5,6 +5,7 @@ var mongoose = require("mongoose");
 var config = require("./configDB");
 var router = require("./router");
 var bodyParser = require("body-parser");
+var cors = require('cors')
 var port = process.env.PORT || 3000;
 
 class Server {
@@ -15,17 +16,7 @@ class Server {
     });
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
-    this.app.use(bodyParser.urlencoded({ extended: false }));
-    this.app.use(bodyParser.json());
-    this.app.use(function(req, res, next) {
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-      res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-      );
-      res.header("access-Control-Allow-Origin", "*");
-      next();
-    });
+    app.use(cors());
     router(this.app);
     mongoose.connect(config.getDbConnectionString(), { useNewUrlParser: true });
   }
